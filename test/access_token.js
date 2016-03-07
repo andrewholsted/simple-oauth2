@@ -1,7 +1,8 @@
 var credentials = { clientID: 'client-id', clientSecret: 'client-secret', site: 'https://example.org' },
     oauth2 = require('./../lib/simple-oauth2.js')(credentials),
     qs = require('querystring'),
-    nock = require('nock');
+    nock = require('nock'),
+    moment = require('moment');
 
 var request,
     result, resultPromise,
@@ -66,8 +67,8 @@ describe('oauth2.accessToken',function() {
   describe('when expired', function() {
 
     beforeEach(function(done) {
-      token.token.expires_at = Date.yesterday();
-      tokenPromise.token.expires_at = Date.yesterday();
+      token.token.expires_at = moment().startOf('day').subtract(1, 'days');
+      tokenPromise.token.expires_at = moment().startOf('day').subtract(1, 'days');
       done();
     });
 
