@@ -14,7 +14,7 @@
   "dependencies": {
     "request": "~2.12.0",
     "querystring": "~0.1.0",
-    "date-utils": "~1.2.12"
+    "moment": "~2.12.0"
   },
   "devDependencies": {
     "bluebird": "^2.10.1",
